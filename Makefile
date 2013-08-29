@@ -13,7 +13,7 @@ app: clean main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o
 	$(CXX) -g main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o -o app $(LIBS)
 
 test: clean main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o
-	$(CXX) -g main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o -o test $(TESTLIBS)
+	$(CXX) -g main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o -o test $(TESTLIBS) $(LIBS)
 
 main.o: main.cpp
 	$(CXX) -c -g main.cpp

@@ -11,6 +11,7 @@
 #include"nelderMead.h"
 #include"point.h"
 #include"timer.h"
+#include"cpuAlgorithms.h"
 
 int Point::counter = 0;
 
