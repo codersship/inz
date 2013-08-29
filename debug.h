@@ -12,10 +12,10 @@
 #include<fstream>
 
 class Debug {
-	std::iostream& stream;
+	std::fstream stream;
 public:
 	Debug();
-	Debug(std::ostream& stream);
+	//Debug(std::ostream& stream);
 	Debug(std::string filename);
 	~Debug();
 	void log(std::string logComunicate);

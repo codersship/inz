@@ -8,17 +8,17 @@
 #include"debug.h"
 
 Debug::Debug() {
-	std::fstream fs;
-	stream = fs.open("nm.log", std::fstream::out);
+	//std::fstream fs;
+	stream.open("nm.log", std::fstream::out);
 }
 
-Debug::Debug(std::ostream& stream) {
+/*Debug::Debug(std::ostream& stream) {
 	this->stream = stream;
 	stream.open();
-}
+}*/
 
 Debug::~Debug() {
-	if (typeid(stream) == typeid(std::fstream) )
+	//if (typeid(stream) == typeid(std::fstream) )
 		stream.close();
 }
 
@@ -27,6 +27,6 @@ void Debug::log(std::string logComunicate) {
 }
 
 Debug::Debug(std::string filename) {
-	std::fstream fs;
-	stream = fs.open(filename, std::fstream::out);
+	//std::fstream fs;
+	stream.open(filename, std::fstream::out);
 }

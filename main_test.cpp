@@ -23,11 +23,14 @@ int NelderMead::expansions = 0;
 int NelderMead::reductions = 0;
 
 int main() {
+	Debug debug;
+	debug.log("Debug test.");
+
 	CppUnit::TextUi::TestRunner runner;
 	runner.addTest(TimerTest::suite());			// 3 tests
 	runner.addTest(FunctionsTest::suite());		//
 	runner.addTest(NelderMeadTest::suite());	// 1
-	runner.addTest(CPUAlgorithmsTest::suite()); //
+	runner.addTest(CPUAgorithmsTest::suite()); //
 	runner.addTest(PointTest::suite());			// 8
 
 	runner.run();
