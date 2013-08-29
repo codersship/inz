@@ -20,7 +20,7 @@ int NelderMead::contractions = 0;
 int NelderMead::expansions = 0;
 int NelderMead::reductions = 0;
 
-int main(int argc, char *argv) {
+int main(int argc, char **argv) {
 	Function* fun = new SimpleQuadFunction();
 	Timer cpuTimer, gpuTimer;
 	Point tab[(fun->dim+1)*SIZE];

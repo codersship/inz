@@ -6,6 +6,7 @@
  */
 
 #include"debug.h"
+#include<ctime>
 
 Debug::Debug() {
 	//std::fstream fs;
@@ -23,10 +24,11 @@ Debug::~Debug() {
 }
 
 void Debug::log(std::string logComunicate) {
-	stream << logComunicate;
+	time_t now = time(NULL);
+	stream << ctime(&now)<<'\t'<< logComunicate << '\n';
 }
 
 Debug::Debug(std::string filename) {
 	//std::fstream fs;
-	stream.open(filename, std::fstream::out);
+	stream.open(filename.c_str(), std::fstream::out);
 }

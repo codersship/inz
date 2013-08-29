@@ -25,7 +25,7 @@ int NelderMead::reductions = 0;
 int main() {
 	Debug debug;
 	debug.log("Debug test.");
-
+/*
 	CppUnit::TextUi::TestRunner runner;
 	runner.addTest(TimerTest::suite());			// 3 tests
 	runner.addTest(FunctionsTest::suite());		//
@@ -39,7 +39,7 @@ int main() {
 	std::cout << "NelderMead::contractions = " << NelderMead::contractions << std::endl;
 	std::cout << "NelderMead::expansions = " << NelderMead::expansions << std::endl;
 	std::cout << "NelderMead::reductions = " << NelderMead::reductions << std::endl;
-
+*/
 	return 1;
 }
 

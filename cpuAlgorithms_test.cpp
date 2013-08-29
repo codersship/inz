@@ -18,7 +18,7 @@ using namespace CppUnit;
 class CPUAgorithmsTest: public CppUnit::TestFixture {
 public:
 
-	void exceptionTest()
+	void exceptionsTest()
 	{
 
 	}
