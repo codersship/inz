@@ -8,9 +8,9 @@
 #ifndef CPUALGORITHMS
 #define CPUALGORITHMS
 
-#include "point.h"
-#include "functions.h"
-#include "Debug.h"
+#include"point.h"
+#include"functions.h"
+#include"debug.h"
 
 typedef struct parameters	// parametry watku
 {

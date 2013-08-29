@@ -12,7 +12,7 @@
 #include"point.h"
 #include"timer.h"
 #include"cpuAlgorithms.h"
-#include "Debug.h"
+#include"debug.h"
 
 int Point::counter = 0;
 

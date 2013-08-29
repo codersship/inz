@@ -14,7 +14,7 @@
 #include"nelderMead_test.cpp"
 #include"point_test.cpp"
 #include"timer_test.cpp"
-#include "Debug.h"
+#include"debug.h"
 
 int Point::counter = 0;
 
