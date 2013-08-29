@@ -15,7 +15,7 @@ CPUAlgorithms::CPUAlgorithms() {
 CPUAlgorithms::~CPUAlgorithms() {
 }
 
-static void* CPUAlgorithms::neldermead_thread(void* params) {
+void* CPUAlgorithms::neldermead_thread(void* params) {
 	nmThreadParameters* param=(nmThreadParameters*) params;
 	Point points[param->f->dim];
 	NelderMead nm(param->f);
@@ -33,7 +33,7 @@ static void* CPUAlgorithms::neldermead_thread(void* params) {
 	return 0;
 }
 
-static Point CPUAlgorithms::neldermead(Point* tab, Function* f) {
+Point CPUAlgorithms::neldermead(Point* tab, Function* f) {
 	Point result[SIZE];
 	pthread_t* threads[SIZE];
 	nmThreadParameters* param[SIZE];
