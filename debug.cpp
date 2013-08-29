@@ -9,10 +9,10 @@
 
 Debug::Debug() {
 	std::fstream fs;
-	stream = fs.open("nm.log",std::fstream::out);
+	stream = fs.open("nm.log", std::fstream::out);
 }
 
-Debug::Debug(std::ostream stream) {
+Debug::Debug(std::ostream& stream) {
 	this->stream = stream;
 	stream.open();
 }
