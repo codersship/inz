@@ -5,11 +5,13 @@
  *      Author: Comarch
  */
 
-#include "Debug.h"
+#include"debug.h"
+#include<fstream>
+#include<ios>
 
 Debug::Debug() {
-	std::fstream fstream;
-	stream = fstream.open("nm.log",std::fstream::out);
+	std::fstream fs;
+	stream = fs.open("nm.log",std::fstream::out);
 }
 
 Debug::Debug(std::ios stream) {
@@ -26,6 +28,6 @@ void Debug::log(std::string logComunicate) {
 }
 
 Debug::Debug(std::string filename) {
-	std::fstream fstream;
-	stream = fstream.open(filename, std::fstream::out);
+	std::fstream fs;
+	stream = fs.open(filename, std::fstream::out);
 }
