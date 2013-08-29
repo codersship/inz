@@ -19,7 +19,7 @@ int NelderMead::expansions = 0;
 int NelderMead::reductions = 0;
 
 int main() {
-	Function* fun = new RosenbrocksFunction();
+	Function* fun = new SimpleQuadFunction();
 	Timer cpuTimer, gpuTimer;
 	Point tab[(fun->dim+1)*SIZE];
 	Point cpuOpt, gpuOpt;

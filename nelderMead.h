@@ -33,6 +33,7 @@ public:
 	nmIndexes();
 	~nmIndexes();
 };
+
 enum Direction {
 	MIN, MAX
 };

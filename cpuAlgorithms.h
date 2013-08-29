@@ -17,11 +17,11 @@ typedef struct parameters	// parametry watku
 	Point* points;
 	Point result;
 	int it;
-} Parameters;
+} nmThreadParameters;
 
 class CPUAlgorithms {
 private:
-	static void* neldermead_thread(void* param);
+	static void* neldermead_thread(void* params);
 
 public:
 	CPUAlgorithms();

@@ -40,4 +40,13 @@ public:
 	double calc(const Point& p);
 };	// optimum [1 1]
 
+class SimpleQuadFunction : public Function
+{
+public:
+	SimpleQuadFunction();
+	~SimpleQuadFunction(){};
+	double operator()(const Point& p);
+	double calc(const Point& p);
+};	// optimum [0 0]
+
 #endif /* FUNCTIONS */
