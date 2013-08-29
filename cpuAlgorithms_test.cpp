@@ -25,7 +25,7 @@ public:
 
 	static Test* suite() {
 		TestSuite* testsSuite = new TestSuite("CPUAgorithmsTest");
-		testsSuite->addTest(new TestCaller<NelderMeadTest>("testExceptions", &CPUAgorithmsTest::exceptionsTest));
+		testsSuite->addTest(new TestCaller<CPUAgorithmsTest>("testExceptions", &CPUAgorithmsTest::exceptionsTest));
 
 		return testsSuite;
 	}

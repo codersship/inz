@@ -73,8 +73,8 @@ public:
 	void wrongCoordinatesTest() throw (std::invalid_argument) {
 		Point p;
 		p.randomizeCoordinates();
-		CPPUNIT_ASSERT_THROW(p.getCrd(DIM+1), std::invalid_argument);
-		CPPUNIT_ASSERT_THROW(p.setCrd(DIM+1,0), std::invalid_argument);
+		CPPUNIT_ASSERT_THROW(p.getCrd(1), std::invalid_argument);
+		CPPUNIT_ASSERT_THROW(p.setCrd(1,0), std::invalid_argument);
 	}
 
 	void memoryTest() {

@@ -47,8 +47,8 @@ public:
 		nm.run();
 		nm.getIterations();
 		for (int i = 0; i < f->dim; ++i) {
-			CPPUNIT_ASSERT(nm.getResult().getCrd(i) <= f.optimum.getCrd(i) + nm.params.epsilon);
-			CPPUNIT_ASSERT(nm.getResult().getCrd(i) >= f.optimum.getCrd(i) - nm.params.epsilon);
+			CPPUNIT_ASSERT(nm.getResult().getCrd(i) <= f->optimum.getCrd(i) + nm.params.epsilon);
+			CPPUNIT_ASSERT(nm.getResult().getCrd(i) >= f->optimum.getCrd(i) - nm.params.epsilon);
 		}
 	}
 
