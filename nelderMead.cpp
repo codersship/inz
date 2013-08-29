@@ -8,12 +8,11 @@
 #include "nelderMead.h"
 
 NelderMead::NelderMead(Function* f) {
-	init();
+	init(f->dim);
 	fun = f;
-	dim = f->dim;
 }
 NelderMead::NelderMead() {
-	init();
+	init(0);
 }
 
 NelderMead::~NelderMead() {
@@ -54,8 +53,8 @@ bool NelderMead::stop() {
 	return true;
 }
 
-void NelderMead::init() {
-	dim = DIM;
+void NelderMead::init(int dimention) {
+	dim = dimention;
 	it = 0;
 	dir = MIN;
 	points = 0;

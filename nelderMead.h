@@ -53,7 +53,7 @@ private:
 	Function* fun;
 	int it;
 
-	void init();
+	void init(int dimention);
 	void calculateIndexes();
 	void calculateCenter();
 	void reflection();
