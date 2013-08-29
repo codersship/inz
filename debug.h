@@ -9,12 +9,13 @@
 #define DEBUG
 
 #include<iostream>
+#include<fstream>
 
 class Debug {
-	std::ios stream;
+	std::iostream stream;
 public:
 	Debug();
-	Debug(std::ios stream);
+	Debug(std::iostream stream);
 	Debug(std::string filename);
 	~Debug();
 	void log(std::string logComunicate);

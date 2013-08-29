@@ -6,15 +6,13 @@
  */
 
 #include"debug.h"
-#include<fstream>
-#include<ios>
 
 Debug::Debug() {
 	std::fstream fs;
 	stream = fs.open("nm.log",std::fstream::out);
 }
 
-Debug::Debug(std::ios stream) {
+Debug::Debug(std::ostream stream) {
 	this->stream = stream;
 	stream.open();
 }
