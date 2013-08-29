@@ -6,6 +6,8 @@
  */
 
 #include "cpuAlgorithms.h"
+#include "nelderMead.h"
+
 
 CPUAlgorithms::CPUAlgorithms() {
 }
@@ -45,7 +47,7 @@ static Point CPUAlgorithms::neldermead(Point* tab, Function* f) {
 	{
 		param[t]->points=&tab[3*t];
 		std::cout<<"URUCHAMIAM WATEK "<<t<<std::endl;
-		pthread_create(threads[t], NULL, &nm_thread, (void*) param[t]);
+		pthread_create(threads[t], NULL, &neldermead_thread, (void*) param[t]);
 	}
 	for (int t=0;t<SIZE;++t)
 	{
