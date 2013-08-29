@@ -9,10 +9,10 @@ clean:
 	touch ?.o
 	rm *.o #*.ghc
 
-app: clean main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o
+app: clean main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o
 	$(CXX) -g main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o -o app $(LIBS)
 
-test: clean main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o
+test: clean main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o
 	$(CXX) -g main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o -o test $(TESTLIBS) $(LIBS)
 
 main.o: main.cpp
@@ -50,3 +50,6 @@ functions_test.o: functions.o functions_test.cpp
 
 functions.o: functions.h functions.cpp point.o
 	$(CXX) -c -g functions.cpp
+	
+debug.o: debug.h debug.cpp 
+	$(CXX) -c -g debug.cpp

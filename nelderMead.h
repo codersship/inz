@@ -11,6 +11,7 @@
 #include<cmath>
 
 #include"const.h"
+#include "Debug.h"
 #include"functions.h"
 #include"point.h"
 

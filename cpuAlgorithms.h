@@ -10,6 +10,7 @@
 
 #include "point.h"
 #include "functions.h"
+#include "Debug.h"
 
 typedef struct parameters	// parametry watku
 {
