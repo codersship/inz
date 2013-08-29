@@ -8,7 +8,7 @@
 #include"timer.h"
 
 Timer::Timer() {
-	state = 'n';	//NEW
+	state = 'n';
 }
 
 Timer::Timer(bool startsAtStart) {
@@ -24,7 +24,7 @@ void Timer::start() throw (TimerException) {
 	if (state == 'm') {
 		throw new TimerException(WRONG_STATE);
 	}
-	state = 'm';	//MEASURING
+	state = 'm';
 	gettimeofday(&start_t, NULL);
 }
 
@@ -32,7 +32,7 @@ void Timer::stop() throw (TimerException) {
 	if (state != 'm') {
 		throw new TimerException(WRONG_STATE);
 	}
-	state = 's';	//STOPPED
+	state = 's';
 	gettimeofday(&end_t, NULL);
 }
 

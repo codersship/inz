@@ -6,7 +6,7 @@ LIBS=-lpthread
 all: test app
 
 clean:
-	touch ?.o
+	touch o.o  
 	rm *.o #*.ghc
 
 app: clean main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o

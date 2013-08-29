@@ -18,7 +18,8 @@ Debug::Debug(std::ostream& stream) {
 }
 
 Debug::~Debug() {
-	stream.close();
+	if (typeid(stream) == typeid(std::fstream) )
+		stream.close();
 }
 
 void Debug::log(std::string logComunicate) {

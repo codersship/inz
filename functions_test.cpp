@@ -49,10 +49,15 @@ public:
 		CPPUNIT_ASSERT(fr->calc(p) == 0);
 	}
 
+	void simpleQuadFunctionTest() {
+
+	}
+
 	static Test* suite() {
 		TestSuite* testsSuite = new TestSuite("NelderMeadTest");
-		//testsSuite->addTest(new TestCaller<FunctionsTest>("rosenbrockTest", &FunctionsTest::rosenbrockTest));
+		testsSuite->addTest(new TestCaller<FunctionsTest>("rosenbrockTest", &FunctionsTest::rosenbrockTest));
 		testsSuite->addTest(new TestCaller<FunctionsTest>("function1Test", &FunctionsTest::function1Test));
+		testsSuite->addTest(new TestCaller<FunctionsTest>("simpleQuadFunctionTest", &FunctionsTest::simpleQuadFunctionTest));
 
 		return testsSuite;
 	}

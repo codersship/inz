@@ -51,7 +51,7 @@ public:
 		CPPUNIT_ASSERT(p + p == p * 2.0);
 	}
 
-	void divisionTest() throw (std::invalid_argument) {
+	void divisionTest() {
 		Point z, p;
 		CPPUNIT_ASSERT(z / 2 == z);
 		p.randomizeCoordinates();

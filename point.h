@@ -19,7 +19,7 @@ private:
 	double* coord;
 	int dim;
 
-	void init();
+	void init(int dimention);
 public:
 	static int counter;
 

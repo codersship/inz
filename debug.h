@@ -15,7 +15,7 @@ class Debug {
 	std::iostream& stream;
 public:
 	Debug();
-	Debug(std::iostream& stream);
+	Debug(std::ostream& stream);
 	Debug(std::string filename);
 	~Debug();
 	void log(std::string logComunicate);

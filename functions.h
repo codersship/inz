@@ -8,8 +8,6 @@
 #ifndef FUNCTIONS
 #define FUNCTIONS
 
-#include<string>
-
 #include"point.h"
 
 class Function {

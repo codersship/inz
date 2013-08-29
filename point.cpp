@@ -12,18 +12,17 @@
 #include<stdexcept>
 
 Point::Point() {
-	init();
+	init(0);
 }
 
 Point::Point(const Point& p) {
-	init();
+	init(p.dim);
 	for (int i = 0; i < dim; ++i)
 		coord[i] = p.getCrd(i);
 }
 
 Point::Point(int dimention) {
-	init();
-	dim = dimention;
+	init(dimention);
 }
 
 Point::~Point() {
@@ -55,7 +54,7 @@ void Point::setCrds(const double *crds) {
 		coord[i]=*(crds+i);
 	}
 }
-
+//TODO delete:
 void Point::loadFromUser() {
 	double x;
 	int i;
@@ -85,27 +84,28 @@ std::ostream & operator<<(std::ostream &ret, const Point &p) {
 	ret << p.getCrd(i + 1) << " ]" << std::endl;
 	return ret;
 }
+
 Point Point::operator+(const Point p) {
 	Point tmp;
 	for (int i = 0; i < dim; ++i)
 		tmp.setCrd(i, getCrd(i) + p.getCrd(i));
 	return tmp;
 }
-;
+
 Point Point::operator-(const Point p) {
 	Point tmp;
 	for (int i = 0; i < dim; ++i)
 		tmp.setCrd(i, this->getCrd(i) - p.getCrd(i));
 	return tmp;
 }
-;
+
 Point Point::operator*(double d) {
 	Point tmp;
 	for (int i = 0; i < dim; ++i)
 		tmp.setCrd(i, getCrd(i) * d);
 	return tmp;
 }
-;
+
 Point Point::operator/(double d) throw (std::invalid_argument) {
 	if (d == 0.0)
 		throw new std::invalid_argument("Don't divide by zero.");
@@ -121,7 +121,7 @@ Point Point::operator*(int d) {
 		tmp.setCrd(i, getCrd(i) * (double) d);
 	return tmp;
 }
-;
+
 Point Point::operator/(int d) throw (std::invalid_argument) {
 	if (d == 0)
 		throw new std::invalid_argument("Don't divide by zero.");
@@ -130,7 +130,7 @@ Point Point::operator/(int d) throw (std::invalid_argument) {
 		tmp.setCrd(i, getCrd(i) / (double) d);
 	return tmp;
 }
-;
+
 Point& Point::operator=(const Point& p) {
 	if (this == &p)
 		return *this;
@@ -138,10 +138,9 @@ Point& Point::operator=(const Point& p) {
 		setCrd(i, p.getCrd(i));
 	return *this;
 }
-;
 
-void Point::init() {
-	dim = DIM;
+void Point::init(int dimention) {
+	dim = dimention;
 	coord = new double[dim];
 	for (int i = 0; i < dim; ++i)
 		coord[i] = 0;

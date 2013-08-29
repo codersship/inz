@@ -46,11 +46,11 @@ private:
 	char state;
 public:
 	Timer();
-	Timer(bool s);	//konstruktor
-	~Timer();	    //destruktor
-	void start() throw(TimerException);	//funkcja rozpoczynajaca odmierzanie
-	void stop() throw(TimerException);	//funkcja konczoaca odmierzanie
-	double delta() throw(TimerException);	//funkcja zwracajaca roznice czasow
+	Timer(bool s);
+	~Timer();
+	void start() throw(TimerException);
+	void stop() throw(TimerException);
+	double delta() throw(TimerException);
 	friend class TimerTest;
 };
 #endif /* TIMER */

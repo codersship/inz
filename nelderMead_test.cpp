@@ -20,11 +20,11 @@ class NelderMeadTest: public CppUnit::TestFixture {
 public:
 //TODO napisac testy
 	void creationTest() {
-		NelderMead nm;
+		NelderMead nm(new SimpleQuadFunction());
 		Point n;
 		CPPUNIT_ASSERT(nm.getIterations() == 0);
 		CPPUNIT_ASSERT(nm.getResult() == n);
-		CPPUNIT_ASSERT(nm.dim==DIM);
+		CPPUNIT_ASSERT(nm.dim==(new SimpleQuadFunction())->dim);
 		CPPUNIT_ASSERT(nm.points == 0);
 
 		CPPUNIT_ASSERT(nm.idx.x1 == 0);
@@ -44,11 +44,11 @@ public:
 		for (int i=0; i < (f->dim + 1); ++i)
 			p[i].randomizeCoordinates();
 		nm.setPoints(p);
-		//nm.run();
+		nm.run();
 		nm.getIterations();
 		for (int i = 0; i < f->dim; ++i) {
-		//	CPPUNIT_ASSERT(nm.getResult().getCrd(i) <= f.optimum.getCrd(i) + nm.params.epsilon);
-		//	CPPUNIT_ASSERT(nm.getResult().getCrd(i) >= f.optimum.getCrd(i) - nm.params.epsilon);
+			CPPUNIT_ASSERT(nm.getResult().getCrd(i) <= f.optimum.getCrd(i) + nm.params.epsilon);
+			CPPUNIT_ASSERT(nm.getResult().getCrd(i) >= f.optimum.getCrd(i) - nm.params.epsilon);
 		}
 	}
 
@@ -56,7 +56,6 @@ public:
 		TestSuite* testsSuite = new TestSuite("NelderMeadTest");
 		testsSuite->addTest(new TestCaller<NelderMeadTest>("creationTest", &NelderMeadTest::creationTest));
 		testsSuite->addTest(new TestCaller<NelderMeadTest>("calculateTest", &NelderMeadTest::calculateTest));
-//		testsSuite->addTest(new TestCaller<NelderMeadTest>("testOddition", &NelderMeadTest::statesTest));
 
 		return testsSuite;
 	}

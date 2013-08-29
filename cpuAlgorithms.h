@@ -12,7 +12,7 @@
 #include"functions.h"
 #include"debug.h"
 
-typedef struct parameters	// parametry watku
+typedef struct parameters	// parametry watku dla alg Neldera-Meada
 {
 	Function* f;
 	Point* points;

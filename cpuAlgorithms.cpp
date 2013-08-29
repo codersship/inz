@@ -67,5 +67,4 @@ Point CPUAlgorithms::neldermead(Point* tab, Function* f) {
 		delete threads[t];
 	}
 	return opt;
-//	return 0;
 }

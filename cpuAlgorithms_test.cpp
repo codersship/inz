@@ -17,12 +17,15 @@ using namespace CppUnit;
 
 class CPUAgorithmsTest: public CppUnit::TestFixture {
 public:
-//TODO napisac testy
+
+	void exceptionTest()
+	{
+
+	}
+
 	static Test* suite() {
 		TestSuite* testsSuite = new TestSuite("CPUAgorithmsTest");
-//		testsSuite->addTest(new TestCaller<NelderMeadTest>("testCreation", &CPUAgorithmsTest::creationTest));
-//		testsSuite->addTest(new TestCaller<NelderMeadTest>("testAddition", &CPUAgorithmsTest::measureTest));
-//		testsSuite->addTest(new TestCaller<NelderMeadTest>("testOddition", &CPUAgorithmsTest::statesTest));
+		testsSuite->addTest(new TestCaller<NelderMeadTest>("testExceptions", &CPUAgorithmsTest::exceptionsTest));
 
 		return testsSuite;
 	}

@@ -40,7 +40,7 @@ SimpleQuadFunction::SimpleQuadFunction() {
 }
 
 double SimpleQuadFunction::operator ()(const Point& p) {
-	return p.getCrd(0)*p.getCrd(0) + p.getCrd(1)*p.getCrd(1);
+	return calc(p);
 }
 
 double SimpleQuadFunction::calc(const Point& p) {
