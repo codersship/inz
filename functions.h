@@ -13,18 +13,18 @@
 class Function {
 public:
 	int dim;
-	Point optimum;
-	virtual ~Function(){};
+	Point* optimum;
+	virtual ~Function(){delete optimum;};
 	virtual double operator()(const Point& p){return 0;};
 	virtual double calc(const Point& p){return 0;};
-	virtual Point getOptimum(){return optimum;};
+	virtual Point getOptimum(){return *optimum;};
 };
 
 class Function1 : public Function
 {
 public:
 	Function1();
-	~Function1(){};
+	//~Function1(){};
 	double operator()(const Point& p);
 	double calc(const Point& p);
 };	// optimum [1 2 3]
@@ -33,7 +33,7 @@ class RosenbrocksFunction : public Function
 {
 public:
 	RosenbrocksFunction();
-	~RosenbrocksFunction(){};
+	//~RosenbrocksFunction(){};
 	double operator()(const Point& p);
 	double calc(const Point& p);
 };	// optimum [1 1]
@@ -42,7 +42,7 @@ class SimpleQuadFunction : public Function
 {
 public:
 	SimpleQuadFunction();
-	~SimpleQuadFunction(){};
+	//~SimpleQuadFunction(){};
 	double operator()(const Point& p);
 	double calc(const Point& p);
 };	// optimum [0 0]

@@ -7,8 +7,7 @@
 #define GAMMA 0.5
 #define EPSILON 0.000000001
 
-//OVERAL CONSTANTS
-#define SIZE 200
-#define THREAD_NUM 1
+//OVERALL CONSTANTS
+#define SIZE 1
 
 #endif

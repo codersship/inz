@@ -6,8 +6,8 @@ LIBS=-lpthread
 all: test app
 
 clean:
-	touch o.o  
-	rm *.o #*.ghc
+	touch o.o o.log o.ghc
+	rm *.o *.log *.ghc
 
 app: clean main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o
 	$(CXX) -g main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o -o app $(LIBS)

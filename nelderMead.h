@@ -9,6 +9,8 @@
 #define NELDERMEAD
 
 #include<cmath>
+#include<string>
+#include<typeinfo>
 
 #include"const.h"
 #include"debug.h"
@@ -47,11 +49,12 @@ private:
 	int dim;
 	nmParams params;
 	Direction dir;
-	Point *points;
+	Point **points;
 	Point center, xr, xe, result;
 	nmIndexes idx;
 	Function* fun;
 	int it;
+	Debug* debug;
 
 	void init(int dimention);
 	void calculateIndexes();
@@ -61,11 +64,10 @@ private:
 	void contraction();
 	void reduction();
 	bool stop();
-
 	bool isBetter(Point b, Point w);
 
 public:
-
+	static std::string logFileName;
 	static int expansions;
 	static int contractions;
 	static int reductions;
@@ -77,7 +79,7 @@ public:
 
 	Point getResult();
 	int getIterations();
-	void setPoints(Point* p);
+	void setPoints(Point** p);
 
 	friend class NelderMeadTest;
 };

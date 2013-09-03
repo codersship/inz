@@ -5,16 +5,25 @@
  *      Author: statek
  */
 
-#include<cppunit/ui/text/TestRunner.h>
-#include<iostream>
+#include <cppunit/TestRunner.h>
+#include <cppunit/ui/text/TestRunner.h>
+#include <cppunit/ui/text/TextTestRunner.h>
+//#include <stdlib.h>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <string>
 
-#include"const.h"
-#include"cpuAlgorithms_test.cpp"
-#include"functions_test.cpp"
-#include"nelderMead_test.cpp"
-#include"point_test.cpp"
-#include"timer_test.cpp"
-#include"debug.h"
+#include "const.h"
+#include "cpuAlgorithms_test.cpp"
+#include "cpuAlgorithms.h"
+#include "debug.h"
+#include "functions_test.cpp"
+#include "nelderMead_test.cpp"
+#include "nelderMead.h"
+#include "point_test.cpp"
+#include "point.h"
+#include "timer_test.cpp"
 
 int Point::counter = 0;
 
@@ -22,10 +31,12 @@ int NelderMead::contractions = 0;
 int NelderMead::expansions = 0;
 int NelderMead::reductions = 0;
 
+std::string NelderMead::logFileName = "NelderMead.log";
+std::string CPUAlgorithms::logFileName = "cpuAlg.log";
+
 int main() {
-	Debug debug;
-	debug.log("Debug test.");
-/*
+	srand (time(NULL));
+
 	CppUnit::TextUi::TestRunner runner;
 	runner.addTest(TimerTest::suite());			// 3 tests
 	runner.addTest(FunctionsTest::suite());		//
@@ -39,7 +50,8 @@ int main() {
 	std::cout << "NelderMead::contractions = " << NelderMead::contractions << std::endl;
 	std::cout << "NelderMead::expansions = " << NelderMead::expansions << std::endl;
 	std::cout << "NelderMead::reductions = " << NelderMead::reductions << std::endl;
-*/
+
 	return 1;
 }
+
 

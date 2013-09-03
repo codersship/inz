@@ -34,6 +34,7 @@ public:
 	void setCrds(const double *crds);
 	void loadFromUser();
 	void randomizeCoordinates();
+	std::string toString();
 
 	friend std::ostream & operator<<(std::ostream &ret, const Point &p);
 	Point operator+(const Point p);

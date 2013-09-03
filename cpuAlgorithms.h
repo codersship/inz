@@ -18,6 +18,7 @@ typedef struct parameters	// parametry watku dla alg Neldera-Meada
 	Point* points;
 	Point result;
 	int it;
+	int thread_num;
 } nmThreadParameters;
 
 class CPUAlgorithms {
@@ -25,6 +26,8 @@ private:
 	static void* neldermead_thread(void* params);
 
 public:
+	static std::string logFileName;
+
 	CPUAlgorithms();
 	~CPUAlgorithms();
 

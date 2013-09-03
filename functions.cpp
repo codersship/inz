@@ -10,7 +10,8 @@
 Function1::Function1() {
 	dim = 3;
 	double opt[] = {1, 2, 3};
-	optimum.setCrds(opt);
+	optimum = new Point(dim);
+	optimum->setCrds(opt);
 }
 double Function1::calc(const Point& p) {
 	return (p.getCrd(0)-1)*(p.getCrd(0)-1)+(p.getCrd(1)-2)*(p.getCrd(1)-2)+(p.getCrd(2)-3)*(p.getCrd(2)-3);
@@ -22,7 +23,8 @@ double Function1::operator ()(const Point& p) {
 RosenbrocksFunction::RosenbrocksFunction() {
 	dim = 2;
 	double opt[] = {1, 1};
-	optimum.setCrds(opt);
+	optimum = new Point(dim);
+	optimum->setCrds(opt);
 }
 
 double RosenbrocksFunction::operator ()(const Point& p) {
@@ -36,7 +38,8 @@ double RosenbrocksFunction::calc(const Point& p) {
 SimpleQuadFunction::SimpleQuadFunction() {
 	dim = 2;
 	double opt[] = {0, 0};
-	optimum.setCrds(opt);
+	optimum = new Point(dim);
+	optimum->setCrds(opt);
 }
 
 double SimpleQuadFunction::operator ()(const Point& p) {

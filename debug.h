@@ -10,15 +10,16 @@
 
 #include<iostream>
 #include<fstream>
+#include<string>
 
 class Debug {
 	std::fstream stream;
 public:
 	Debug();
 	//Debug(std::ostream& stream);
-	Debug(std::string filename);
+	Debug(const std::string &filename);
 	~Debug();
-	void log(std::string logComunicate);
+	void log(const std::string logComunicate);
 };
 
 #endif /* DEBUG */

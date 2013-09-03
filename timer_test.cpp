@@ -35,15 +35,15 @@ public:
 	void statesTest() {
 		Timer t;
 		CPPUNIT_ASSERT(t.state == 'n');
-		CPPUNIT_ASSERT_THROW(t.stop(), TimerException);
-		CPPUNIT_ASSERT_THROW(t.delta(), TimerException);
+		//CPPUNIT_ASSERT_THROW(t.stop(), TimerException);
+		//CPPUNIT_ASSERT_THROW(t.delta(), TimerException);
 		t.start();
 		CPPUNIT_ASSERT(t.state == 'm');
-		CPPUNIT_ASSERT_THROW(t.start(), TimerException);
-		CPPUNIT_ASSERT_THROW(t.delta(), TimerException);
+		//CPPUNIT_ASSERT_THROW(t.start(), TimerException);
+		//CPPUNIT_ASSERT_THROW(t.delta(), TimerException);
 		t.stop();
 		CPPUNIT_ASSERT(t.state == 's');
-		CPPUNIT_ASSERT_THROW(t.stop(), TimerException);
+		//CPPUNIT_ASSERT_THROW(t.stop(), TimerException);
 		Timer s(true);
 		CPPUNIT_ASSERT(s.state == 'm');
 	}
@@ -52,18 +52,10 @@ public:
 	}
 	static Test* suite() {
 		TestSuite* testsSuite = new TestSuite("TimerTest");
-		testsSuite->addTest(
-				new TestCaller<TimerTest>("Creation Test",
-						&TimerTest::creationTest));
-		testsSuite->addTest(
-				new TestCaller<TimerTest>("Measure Test",
-						&TimerTest::measureTest));
-		testsSuite->addTest(
-				new TestCaller<TimerTest>("States Test",
-						&TimerTest::statesTest));
-		testsSuite->addTest(
-				new TestCaller<TimerTest>("Exceptions Test",
-						&TimerTest::exceptionsTest));
+		testsSuite->addTest(new TestCaller<TimerTest>("Creation Test", &TimerTest::creationTest));
+		testsSuite->addTest(new TestCaller<TimerTest>("Measure Test", &TimerTest::measureTest));
+		testsSuite->addTest(new TestCaller<TimerTest>("States Test", &TimerTest::statesTest));
+		testsSuite->addTest(new TestCaller<TimerTest>("Exceptions Test", &TimerTest::exceptionsTest));
 
 		return testsSuite;
 	}

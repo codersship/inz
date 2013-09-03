@@ -20,6 +20,9 @@ int NelderMead::contractions = 0;
 int NelderMead::expansions = 0;
 int NelderMead::reductions = 0;
 
+std::string NelderMead::logFileName = "NelderMead.log";
+std::string CPUAlgorithms::logFileName = "cpuAlg.log";
+
 int main(int argc, char **argv) {
 	Function* fun = new SimpleQuadFunction();
 	Timer cpuTimer, gpuTimer;

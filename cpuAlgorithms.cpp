@@ -16,24 +16,29 @@ CPUAlgorithms::~CPUAlgorithms() {
 }
 
 void* CPUAlgorithms::neldermead_thread(void* params) {
+	Debug* debug = new Debug(logFileName);
 	nmThreadParameters* param=(nmThreadParameters*) params;
-	Point points[param->f->dim];
+	Point** points = new Point*[param->f->dim+1];//(param->f->dim);
+	for (int i=0; i< param->f->dim+1; ++i)
+	{
+		points[i] = new Point(param->f->dim);
+		points[i]->randomizeCoordinates();
+	}
 	NelderMead nm(param->f);
-	/*if (DEBUG_MODE)
-		std::cout<<"Punkty startowe: "<<std::endl
-		<<param->points[0]<<param->points[1]<<param->points[2];*/
-	for (int d=0; d<param->f->dim; ++d)
-		points[d]=param->points[d];
+	//debug->log("THREAD "+param->thread_num+": Start points: "+param->points[0].toString()+" "+param->points[1].toString()+" "+param->points[2].toString());
+	for (int d=0; d<param->f->dim+1; ++d)
+		*points[d] = param->points[d];
 	nm.setPoints(points);
 	nm.run();
 	param->result=nm.getResult();
 	param->it=nm.getIterations();
-//	//if (DEBUG_MODE)
-//	//	std::cout<<"otrzymalem wynik: "<<param->result<<std::endl;
+	//debug->log("THREAD "+param->thread_num+": Optimum result: "+param->result.toString());
+	delete debug;
 	return 0;
 }
 
 Point CPUAlgorithms::neldermead(Point* tab, Function* f) {
+	Debug* debug = new Debug(logFileName);
 	Point result[SIZE];
 	pthread_t* threads[SIZE];
 	nmThreadParameters* param[SIZE];
@@ -61,10 +66,11 @@ Point CPUAlgorithms::neldermead(Point* tab, Function* f) {
 	for (int i=0;i<SIZE;++i)
 		opt=opt+result[i];
 	opt=opt/SIZE;
-	for (int t=0;t<THREAD_NUM;++t)
+	for (int t=0;t<SIZE;++t)
 	{
 		delete param[t];
 		delete threads[t];
 	}
+	delete debug;
 	return opt;
 }

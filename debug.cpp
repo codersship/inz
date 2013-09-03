@@ -23,12 +23,12 @@ Debug::~Debug() {
 		stream.close();
 }
 
-void Debug::log(std::string logComunicate) {
+void Debug::log(const std::string logComunicate) {
 	time_t now = time(NULL);
 	stream << ctime(&now)<<'\t'<< logComunicate << '\n';
 }
 
-Debug::Debug(std::string filename) {
+Debug::Debug(const std::string &filename) {
 	//std::fstream fs;
 	stream.open(filename.c_str(), std::fstream::out);
 }
