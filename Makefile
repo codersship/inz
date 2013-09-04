@@ -9,11 +9,11 @@ clean:
 	touch o.o o.log o.ghc
 	rm *.o *.log *.ghc
 
-app: clean main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o
-	$(CXX) -g main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o -o app $(LIBS)
+app: clean main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o parser.o
+	$(CXX) -g main.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o parser.o -o app $(LIBS)
 
-test: clean main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o
-	$(CXX) -g main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o -o test $(TESTLIBS) $(LIBS)
+test: clean main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o parser.o
+	$(CXX) -g main_test.o point.o timer.o nelderMead.o cpuAlgorithms.o functions.o debug.o parser.o -o test $(TESTLIBS) $(LIBS)
 
 main.o: main.cpp
 	$(CXX) -c -g main.cpp
@@ -53,3 +53,9 @@ functions.o: functions.h functions.cpp point.o
 	
 debug.o: debug.h debug.cpp 
 	$(CXX) -c -g debug.cpp
+
+parser_test.o: parser.o parser_test.cpp
+	$(CXX) -c -g parser_test.cpp
+
+parser.o: parser.h parser.cpp nelderMead.o functions.o
+	$(CXX) -c -g parser.cpp

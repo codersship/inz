@@ -10,7 +10,7 @@
 
 Debug::Debug() {
 	//std::fstream fs;
-	stream.open("nm.log", std::fstream::out);
+	//stream.open("nm.log", std::fstream::out);
 }
 
 /*Debug::Debug(std::ostream& stream) {
@@ -20,15 +20,23 @@ Debug::Debug() {
 
 Debug::~Debug() {
 	//if (typeid(stream) == typeid(std::fstream) )
-		stream.close();
+		//stream.close();
 }
 
 void Debug::log(const std::string logComunicate) {
 	time_t now = time(NULL);
+	stream.open(filename.c_str(), std::fstream::out);
 	stream << ctime(&now)<<'\t'<< logComunicate << '\n';
+	stream.close();
 }
 
 Debug::Debug(const std::string &filename) {
 	//std::fstream fs;
-	stream.open(filename.c_str(), std::fstream::out);
+	this->filename = filename;
+	//stream.open(filename.c_str(), std::fstream::out);
 }
+/*
+Debug& Debug::operator<<(Debug, std::string)
+{
+
+}*/

@@ -22,7 +22,7 @@ Timer::~Timer() {
 
 void Timer::start() throw (TimerException) {
 	if (state == 'm') {
-		throw new TimerException(WRONG_STATE);
+		throw TimerException(WRONG_STATE);
 	}
 	state = 'm';
 	gettimeofday(&start_t, NULL);
@@ -30,7 +30,7 @@ void Timer::start() throw (TimerException) {
 
 void Timer::stop() throw (TimerException) {
 	if (state != 'm') {
-		throw new TimerException(WRONG_STATE);
+		throw TimerException(WRONG_STATE);
 	}
 	state = 's';
 	gettimeofday(&end_t, NULL);
@@ -38,7 +38,7 @@ void Timer::stop() throw (TimerException) {
 
 double Timer::delta() throw (TimerException) {
 	if (state != 's') {
-		throw new TimerException(WRONG_STATE);
+		throw TimerException(WRONG_STATE);
 	}
 	return (end_t.tv_sec - start_t.tv_sec) + (double) (end_t.tv_usec - start_t.tv_usec) / 1000000;
 }

@@ -57,8 +57,8 @@ public:
 		Point z(DIM), p(DIM);
 		CPPUNIT_ASSERT(z / 2 == z);
 		p.randomizeCoordinates();
-		//CPPUNIT_ASSERT_THROW(p / 0.0, std::invalid_argument);
-		//CPPUNIT_ASSERT_THROW(p / 0, std::invalid_argument);
+		CPPUNIT_ASSERT_THROW(p / 0.0, std::invalid_argument);
+		CPPUNIT_ASSERT_THROW(p / 0, std::invalid_argument);
 		CPPUNIT_ASSERT(p / 1 == p);
 		Point r = p + p;
 		CPPUNIT_ASSERT(r / 2 == p);
@@ -75,8 +75,8 @@ public:
 	void wrongCoordinatesTest() throw (std::invalid_argument) {
 		Point p(DIM);
 		p.randomizeCoordinates();
-		//CPPUNIT_ASSERT_THROW(p.getCrd(DIM+1), std::invalid_argument);
-		//CPPUNIT_ASSERT_THROW(p.setCrd(DIM+1,0), std::invalid_argument);
+		CPPUNIT_ASSERT_THROW(p.getCrd(DIM+1), std::invalid_argument);
+		CPPUNIT_ASSERT_THROW(p.setCrd(DIM+1,0), std::invalid_argument);
 	}
 
 	void memoryTest() {

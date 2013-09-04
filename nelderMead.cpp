@@ -70,27 +70,26 @@ void NelderMead::init(int dimention) {
 void NelderMead::run() {
 	debug->log("NM algorithm starts.");
 	it = 0;
-	while (!stop()) {
+	//while (!stop()) {
 		std::stringstream ss;
 		ss<< "Iteration " << ++it << "\n points:\t";
 		for (int i=0; i<dim+1; ++i)
 			ss<<points[i]->toString() <<"\t";
 		debug->log( ss.str() );
-		++it;
 		calculateIndexes();
 		result = *points[idx.x1];
 		calculateCenter();
 		reflection();
 		if (isBetter(xr, *points[idx.x1])) {
 			expansion();
-			continue;
+			//continue;
 		}
 		if (isBetter(*points[idx.xn], xr)) {
 			contraction();
-			continue;
+		//	continue;
 		}
 		reduction();
-	}
+	//}
 }
 
 Point NelderMead::getResult() {

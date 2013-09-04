@@ -29,26 +29,30 @@ public:
 		t.start();
 		sleep(10);
 		t.stop();
+		double dt = t.delta();
 		CPPUNIT_ASSERT(t.delta() >= 10.0);
-		CPPUNIT_ASSERT(t.delta() <= 11.0);
+		CPPUNIT_ASSERT(t.delta() <= 10.001);
 	}
 	void statesTest() {
 		Timer t;
 		CPPUNIT_ASSERT(t.state == 'n');
-		//CPPUNIT_ASSERT_THROW(t.stop(), TimerException);
-		//CPPUNIT_ASSERT_THROW(t.delta(), TimerException);
+		CPPUNIT_ASSERT_THROW(t.stop(), TimerException);
+		CPPUNIT_ASSERT_THROW(t.delta(), TimerException);
 		t.start();
 		CPPUNIT_ASSERT(t.state == 'm');
-		//CPPUNIT_ASSERT_THROW(t.start(), TimerException);
-		//CPPUNIT_ASSERT_THROW(t.delta(), TimerException);
+		CPPUNIT_ASSERT_THROW(t.start(), TimerException);
+		CPPUNIT_ASSERT_THROW(t.delta(), TimerException);
 		t.stop();
 		CPPUNIT_ASSERT(t.state == 's');
-		//CPPUNIT_ASSERT_THROW(t.stop(), TimerException);
+		CPPUNIT_ASSERT_THROW(t.stop(), TimerException);
 		Timer s(true);
 		CPPUNIT_ASSERT(s.state == 'm');
 	}
 	void exceptionsTest() {
-		// TODO
+		TimerException te(UNRECOGNIZED);
+		CPPUNIT_ASSERT(te.getMsg() == "Unrecognized exception.");
+		TimerException tews(WRONG_STATE);
+		CPPUNIT_ASSERT(tews.getMsg() == "Wrong operation for this state.");
 	}
 	static Test* suite() {
 		TestSuite* testsSuite = new TestSuite("TimerTest");

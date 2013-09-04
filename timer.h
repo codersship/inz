@@ -14,7 +14,7 @@
 #include<unistd.h>
 
 enum TimerExceptionMsg {
-	WRONG_STATE
+	WRONG_STATE, UNRECOGNIZED
 };
 
 class TimerException: public std::exception {

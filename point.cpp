@@ -57,19 +57,6 @@ void Point::setCrds(const double *crds) {
 		coord[i] = *(crds + i);
 	}
 }
-//TODO delete:
-void Point::loadFromUser() {
-	double x;
-	int i;
-	std::cout << "[ " << std::endl;
-	for (i = 0; i < dim - 1; ++i) {
-		std::cin >> x;
-		setCrd(i, x);
-	}
-	std::cin >> x;
-	setCrd(i, x);
-	std::cout << "]" << std::endl;
-}
 
 void Point::randomizeCoordinates() {
 	double x;
@@ -125,7 +112,7 @@ Point Point::operator*(double d) {
 
 Point Point::operator/(double d) throw (std::invalid_argument) {
 	if (d == 0.0)
-		throw new std::invalid_argument("Don't divide by zero.");
+		throw std::invalid_argument("Don't divide by zero.");
 	Point tmp(dim);
 	for (int i = 0; i < dim; ++i)
 		tmp.setCrd(i, getCrd(i) / d);
@@ -141,7 +128,7 @@ Point Point::operator*(int d) {
 
 Point Point::operator/(int d) throw (std::invalid_argument) {
 	if (d == 0)
-		throw new std::invalid_argument("Don't divide by zero.");
+		throw std::invalid_argument("Don't divide by zero.");
 	Point tmp(dim);
 	for (int i = 0; i < dim; ++i)
 		tmp.setCrd(i, getCrd(i) / (double) d);

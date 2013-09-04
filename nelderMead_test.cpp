@@ -18,7 +18,6 @@ using namespace CppUnit;
 
 class NelderMeadTest: public CppUnit::TestFixture {
 public:
-//TODO napisac testy
 	void creationTest() {
 		SimpleQuadFunction sqf;
 		NelderMead nm(&sqf);
@@ -50,9 +49,13 @@ public:
 		nm.setPoints(p);
 		nm.run();
 		int iterations = nm.getIterations();
+		Point result = nm.getResult();
+		std::cout<< result;
+		std::cout<< f->optimum->toString();
+		std::cout<< nm.params.epsilon;
 		for (int i = 0; i < f->dim; ++i) {
-//			CPPUNIT_ASSERT(nm.getResult().getCrd(i) <= f->optimum.getCrd(i) + nm.params.epsilon);
-//			CPPUNIT_ASSERT(nm.getResult().getCrd(i) >= f->optimum.getCrd(i) - nm.params.epsilon);
+			CPPUNIT_ASSERT(nm.getResult().getCrd(i) <= f->optimum->getCrd(i) + nm.params.epsilon);
+			CPPUNIT_ASSERT(nm.getResult().getCrd(i) >= f->optimum->getCrd(i) - nm.params.epsilon);
 		}
 		for (int i = 0; i < (f->dim + 1); ++i) {
 			delete p[i];
