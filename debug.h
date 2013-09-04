@@ -15,13 +15,12 @@
 class Debug {
 	std::fstream stream;
 	std::string filename;
+	std::stringstream ss;
 public:
 	Debug();
-	//Debug(std::ostream& stream);
 	Debug(const std::string &filename);
 	~Debug();
-	void log(const std::string logComunicate);
-	//TODO operator <<
+	void log();
 };
 
 #endif /* DEBUG */

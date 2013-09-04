@@ -22,7 +22,8 @@ NelderMead::~NelderMead() {
 }
 
 void NelderMead::calculateIndexes() {
-	debug->log("\"sorting points\".");
+	debug->ss <<"\"sorting\" points.";
+	debug->log();
 	idx.x1 = 0;
 	idx.xn = 0;
 	idx.xn1 = 0;
@@ -39,7 +40,8 @@ void NelderMead::calculateIndexes() {
 }
 
 void NelderMead::calculateCenter() {
-	debug->log("calculation of center point.");
+	debug->ss <<"calculation of center point.";
+	debug->log();
 	Point c(dim);
 	for (int j = 0; j < dim + 1; ++j) {
 		if (j != idx.xn1)
@@ -60,7 +62,8 @@ bool NelderMead::stop() {
 
 void NelderMead::init(int dimention) {
 	debug = new Debug(logFileName);
-	debug->log("initiation of NM.");
+	debug->ss<<"initiation of NM.";
+	debug->log();
 	dim = dimention;
 	it = 0;
 	dir = MIN;
@@ -68,28 +71,28 @@ void NelderMead::init(int dimention) {
 }
 
 void NelderMead::run() {
-	debug->log("NM algorithm starts.");
+	debug->ss <<"NM algorithm starts.";
+	debug->log();
 	it = 0;
-	//while (!stop()) {
-		std::stringstream ss;
-		ss<< "Iteration " << ++it << "\n points:\t";
+	while (!stop()) {
+		debug->ss<< "Iteration " << ++it << "\n points:\t";
 		for (int i=0; i<dim+1; ++i)
-			ss<<points[i]->toString() <<"\t";
-		debug->log( ss.str() );
+			debug->ss<<points[i]->toString() <<"\t";
+		debug->log();
 		calculateIndexes();
 		result = *points[idx.x1];
 		calculateCenter();
 		reflection();
 		if (isBetter(xr, *points[idx.x1])) {
 			expansion();
-			//continue;
+			continue;
 		}
 		if (isBetter(*points[idx.xn], xr)) {
 			contraction();
-		//	continue;
+			continue;
 		}
 		reduction();
-	//}
+	}
 }
 
 Point NelderMead::getResult() {
@@ -125,8 +128,8 @@ nmIndexes::~nmIndexes() {
 
 void NelderMead::reflection() {
 	xr = center + (center - *points[idx.xn1]) * params.alpha;
-	std::string str = "REFLECTION. xr =";
-	debug->log( str += xr.toString());
+	debug->ss<< "REFLECTION. xr =" <<xr;
+	debug->log();
 }
 
 void NelderMead::expansion() {
@@ -136,8 +139,8 @@ void NelderMead::expansion() {
 		*points[idx.xn1] = xe;
 	else
 		*points[idx.xn1] = xr;
-	std::string str = "EXPANSION. xe =";
-	debug->log( str += xe.toString());
+	debug->ss<< "EXPANSION. xe ="<<xe;;
+	debug->log();
 }
 
 void NelderMead::contraction() {
@@ -150,15 +153,16 @@ void NelderMead::contraction() {
 			xe = center + (xr - center) * params.gamma;
 		//if (isBetter(xe, *points[idx.xn1]) && isBetter(xe, xr)) {
 			*points[idx.xn1] = xe;
-			std::string str = "CONTRACTION. xe =";
-			debug->log( str += xe.toString());
+			debug->ss << "CONTRACTION. xe =" << xe;
+			debug->log();
 			return;
-		//}  TODO how explain it?
+		//} // TODO how explain it?
 	}
 }
 
 void NelderMead::reduction() {
-	debug->log("REDUCTION.");
+	debug->ss <<"REDUCTION.";
+	debug->log();
 	++reductions;
 	*points[idx.xn1] = xr;
 }

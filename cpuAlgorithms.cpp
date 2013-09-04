@@ -17,22 +17,19 @@ CPUAlgorithms::~CPUAlgorithms() {
 
 void* CPUAlgorithms::neldermead_thread(void* params) {
 	Debug* debug = new Debug(logFileName);
-	std::stringstream ss;
 	nmThreadParameters* param = (nmThreadParameters*) params;
 	//Point** points;// = new Point*[param->f->dim + 1];
 	NelderMead nm(param->f);
-	ss.flush();
-	ss << "THREAD " << param->thread_num << ": Start points: " << param->points[0].toString() << " " << param->points[1].toString() << " " << param->points[2].toString();
-	debug->log(ss.str());
+	debug->ss << "THREAD " << param->thread_num << ": Start points: " << param->points[0].toString() << " " << param->points[1].toString() << " " << param->points[2].toString();
+	debug->log();
 	//for (int d = 0; d < param->f->dim + 1; ++d)
 	//	*points[d] = param->points[d];
 	nm.setPoints(&param->points);
 	nm.run();
 	param->result = nm.getResult();
 	param->it = nm.getIterations();
-	ss.flush();
-	ss << "THREAD " << param->thread_num << ": Optimum result: " << param->result.toString();
-	debug->log(ss.str());
+	debug->ss << "THREAD " << param->thread_num << ": Optimum result: " << param->result.toString();
+	debug->log();
 	delete debug;
 	return 0;
 }
@@ -51,18 +48,16 @@ Point CPUAlgorithms::neldermead(Point* tab, Function* f) {
 	for (int t = 0; t < SIZE; ++t) {
 		param[t]->points = &tab[3 * t];
 		param[t]->f = f;
-		ss.flush();
-		ss << "URUCHAMIAM WATEK " << t;
-		debug->log(ss.str());
+		debug->ss << "URUCHAMIAM WATEK " << t;
+		debug->log();
 
 		pthread_create(threads[t], NULL, &neldermead_thread, (void*) param[t]);
 	}
 	for (int t = 0; t < SIZE; ++t) {
 		pthread_join(*threads[t], NULL);
 		result[t] = param[t]->result;
-		ss.flush();
-		ss << "ZAKONCZYLEM WATEK " << t << "\n\tL. it= " << param[t]->it << "\n\tWynik= " << result[t];
-		debug->log(ss.str());
+		debug->ss << "ZAKONCZYLEM WATEK " << t << "\n\tL. it= " << param[t]->it << "\n\tWynik= " << result[t];
+		debug->log();
 	}
 	Point opt;
 	for (int i = 0; i < SIZE; ++i)
