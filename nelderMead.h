@@ -23,6 +23,7 @@ public:
 	double beta;
 	double gamma;
 	double epsilon;
+	int maxIterations;
 	nmParams();
 	~nmParams();
 };

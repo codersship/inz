@@ -9,6 +9,6 @@
 
 //OVERALL CONSTANTS
 #define SIZE 1000
-#define MAXIT 1000000
+#define MAXITERATIONS 1000000
 
 #endif

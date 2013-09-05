@@ -51,7 +51,7 @@ void NelderMead::calculateCenter() {
 }
 
 bool NelderMead::stop() {
-	if (it>MAXIT) return true;
+	if (it > params.maxIterations) return true;
 	for (int p1 = 0; p1 < dim + 1; ++p1)
 		for (int p2 = p1 + 1; p2 < dim + 1; ++p2)
 			for (int crd = 0; crd < dim; ++crd) {
@@ -113,6 +113,7 @@ nmParams::nmParams() {
 	beta = BETA;
 	gamma = GAMMA;
 	epsilon = EPSILON;
+	maxIterations = MAXITERATIONS;
 }
 
 nmParams::~nmParams() {
