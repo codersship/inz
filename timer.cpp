@@ -42,3 +42,12 @@ double Timer::delta() throw (TimerException) {
 	}
 	return (end_t.tv_sec - start_t.tv_sec) + (double) (end_t.tv_usec - start_t.tv_usec) / 1000000;
 }
+std::string Timer::deltaToString()
+{
+	std::stringstream ss;
+	double sec = delta();
+	int min = (int)sec/60;
+	sec = sec - min * 60;
+	ss << min <<":"<< sec;
+	return ss.str();
+}

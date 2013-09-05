@@ -21,18 +21,26 @@ int NelderMead::contractions = 0;
 int NelderMead::expansions = 0;
 int NelderMead::reductions = 0;
 
+int CPUAlgorithms::threadCounter = 0;
+
 std::string NelderMead::logFileName = "NelderMead.log";
 std::string CPUAlgorithms::logFileName = "cpuAlg.log";
 
 int main(int argc, char **argv) {
+//	Timer timer;
+//	timer.start();
+//	sleep(70);
+//	timer.stop();
+//	std::cout<< timer.delta()<<std::endl<<timer.deltaToString();
+//	return 0;
+
 	//Parser(argc, argv);
 	//TODO parse parameters
-	//TODO think about points transmision to inside functions
 	Function* fun = new SimpleQuadFunction();
 	Timer cpuTimer, gpuTimer;
 	Point tab[(fun->dim+1)*SIZE];
 	Point cpuOpt, gpuOpt;
-	srand (time(NULL));
+	srand (1);
 	for (int i=0;i<(fun->dim+1)*SIZE;++i)
 	{
 		Point tmp(fun->dim);
@@ -42,11 +50,12 @@ int main(int argc, char **argv) {
 	cpuTimer.start();
 		cpuOpt = CPUAlgorithms::neldermead(tab,fun);
 	cpuTimer.stop();
-	std::cout<<"cpu Optimum: "<<cpuOpt<<"cpu Time: "<<cpuTimer.delta()<<std::endl;
 	gpuTimer.start();
 		//gpuOpt=GPUAlgorithms::neldermead(tab,fun);
 	gpuTimer.stop();
-	std::cout<<"gpu Optimum: "<<cpuOpt<<"gpu Time: "<<gpuTimer.delta()<<std::endl;
+	std::cout<<"Function optimum: "<<*fun->optimum;
+	std::cout<<"CPU      optimum: "<<cpuOpt<<"cpu Time: "<<cpuTimer.deltaToString()<<std::endl;
+	std::cout<<"GPU      optimum: "<<cpuOpt<<"gpu Time: "<<gpuTimer.delta()<<std::endl;
 	return 0;
 }
 

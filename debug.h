@@ -10,13 +10,16 @@
 
 #include<iostream>
 #include<fstream>
+#include<sstream>
 #include<string>
 
 class Debug {
+private:
 	std::fstream stream;
 	std::string filename;
-	std::stringstream ss;
+
 public:
+	std::stringstream ss;
 	Debug();
 	Debug(const std::string &filename);
 	~Debug();

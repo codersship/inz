@@ -1,5 +1,5 @@
 #Makefile
-CXX=g++
+CXX=nvcc
 TESTLIBS=-lcppunit
 LIBS=-lpthread
 

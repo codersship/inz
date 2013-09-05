@@ -8,6 +8,7 @@
 #define EPSILON 0.000000001
 
 //OVERALL CONSTANTS
-#define SIZE 1
+#define SIZE 1000
+#define MAXIT 1000000
 
 #endif

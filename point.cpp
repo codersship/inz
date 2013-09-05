@@ -138,7 +138,7 @@ Point Point::operator/(int d) throw (std::invalid_argument) {
 Point& Point::operator=(const Point& p) {
 	if (this == &p)
 		return *this;
-	delete[] coord;
+	if (coord != 0) delete[] coord;
 	init(p.dim);
 	for (int i = 0; i < dim; ++i)
 		setCrd(i, p.getCrd(i));

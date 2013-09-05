@@ -21,9 +21,11 @@ typedef struct parameters	// parametry watku dla alg Neldera-Meada
 	int thread_num;
 } nmThreadParameters;
 
+
 class CPUAlgorithms {
 private:
 	static void* neldermead_thread(void* params);
+	static int threadCounter;
 
 public:
 	static std::string logFileName;
@@ -32,6 +34,8 @@ public:
 	~CPUAlgorithms();
 
 	static Point neldermead(Point *tab, Function* f);
+	static void incThreadCounter();
+	static void decThreadCounter();
 
 	friend class CPUAgorithmsTest;
 };

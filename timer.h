@@ -10,6 +10,7 @@
 
 #include<exception>
 #include<string>
+#include<sstream>
 #include<sys/time.h>
 #include<unistd.h>
 
@@ -51,6 +52,7 @@ public:
 	void start() throw(TimerException);
 	void stop() throw(TimerException);
 	double delta() throw(TimerException);
+	std::string deltaToString();
 	friend class TimerTest;
 };
 #endif /* TIMER */
